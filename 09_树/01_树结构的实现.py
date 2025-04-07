@@ -49,6 +49,8 @@ class Tree:
             if d['is_root']:
                 self.root = node
 
+
 if __name__ == '__main__':
+
     tree = Tree()
     tree.init_data(node_list)
