@@ -51,10 +51,17 @@ class Tree:
                 self.root = node
 
 
-    
+    def iter_node1(self, node):
+        if node:
+            print(node)
+            print(node.data, end='\t')
+            self.iter_node1(node.left)
+            self.iter_node1(node.right)
+            print()
 
 
 if __name__ == '__main__':
 
     tree = Tree()
     tree.init_data(node_list)
+    tree.iter_node1(tree.root)
