@@ -34,20 +34,24 @@ class Tree:
 
         node_dict = {}
 
-        # 遍历原数据列表 先封装成node 在
+        # 遍历原数据列表 先封装成node 再将节点进行保存，放到一个容器中，放到一个字典中，字典的键为 node 的值
         for d in datas:
-            node = Node(d['data'], d['left'], d['right'])
-            node_dict[d['data']] = node
+            node = Node(d['data'], d['left'], d['right'])       # 封装node节点
+            node_dict[d['data']] = node         # 将节点保存到字典中
 
+        # 使节点与节点之间产生关联
         for d in datas:
-            node = node_dict[d['data']]
+            node = node_dict[d['data']]         # 从字典中取出节点
 
-            if node.left:
-                node.left = node_dict[node.left]
-            if node.right:
-                node.right = node_dict[node.right]
-            if d['is_root']:
+            if node.left:       # 如果存在左子节点
+                node.left = node_dict[node.left]        # 将子节点挂到父节点左边
+            if node.right:      # 如果存在右子节点
+                node.right = node_dict[node.right]      # 将子节点挂到父节点右边
+            if d['is_root']:        # 如果是根节点，则将该节点赋给根
                 self.root = node
+
+
+
 
 
 if __name__ == '__main__':
