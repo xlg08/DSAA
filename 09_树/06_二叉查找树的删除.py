@@ -100,14 +100,17 @@ class Tree:
             else:           # 有两个孩子时，需要找到最小的值
                 # 从右节点中找到最小的值
                 #   因为右节点中的值比左节点中的都大，所以找到右节点的最小值，作为新的父节点，可以保证大于左节点小于右节点
-                node = self.get_min(subtree.right)
-                subtree.data = node.data
-                subtree.right = self.remove_node(subtree.right, node.data)
+                node = self.get_min(subtree.right)      # 找到右支上的最小值
+                subtree.data = node.data        # 将最小值的值赋值给当前节点
+                subtree.right = self.remove_node(subtree.right, node.data)      # 将赋值完成的最小值在原位置删除
                 return subtree
 
     def remove(self, value):
-        if self.search:      # 先查找值是否在树中存在
-            self.remove_node(self.root, value)
+        if self.search(self.root, value):      # 先查找值是否在树中存在
+            self.remove_node(self.root, value)      # 如果删除的元素存在，则执行真正的删除方法
+            return f"删除{value}成功"
+        else:
+            return f"删除的值不存在"
 
 if __name__ == '__main__':
     tree = Tree()
@@ -128,7 +131,7 @@ if __name__ == '__main__':
 
     print(tree.root.data)
     print(tree.root.left)
-    tree.remove(12)
+    print(tree.remove(12))
     print(tree.root.data)
     print(tree.root.left)
 
