@@ -36,13 +36,15 @@ class Heap:
         self.item = Array(8)
         self.count = 0
 
+    # 添加的节点
     def add(self, value):
         self.item[self.count] = value
         self.siftup(self.count)
         self.count += 1
 
 
-    def siftup(self, index):        # 与父结点进行比较，实现换值效果
+    # 添加新节点时，与父结点进行比较，如果比父节点大，实现换值效果
+    def siftup(self, index):
         if index > 0:       # 当不是根节点就进行比较
             parent = (index-1)//2           # 找到该节点的父节点的索引
             if self.item[index] > self.item[parent]:        # 如果当前节点比父节点小则进行交换
@@ -59,6 +61,6 @@ if __name__ == '__main__':
     heap.add(20)
     heap.add(14)
 
-    for i in heap:
+    for i in heap.item:
         if i:
             print(i)
