@@ -1,12 +1,12 @@
 '''
     Tim排序：
 
-
 '''
 
 
 # TimSort 依赖于插入排序和归并排序，首先实现这 2 种排序。
 # insertionSort函数用插入排序从left到right排序数组arr
+# 插入排序
 def insertionSort(arr, left, right):
     for i in range(left + 1, right + 1):
         j = i
